@@ -9,23 +9,22 @@
     <version>1.0-SNAPSHOT</version>
     <name>lightadmin-demo</name>
 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.2.3.RELEASE</version>
+	</parent>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
 
         <lightadmin.version>1.1.0.BUILD-SNAPSHOT</lightadmin.version>
         <light-logging-configurer.version>1.0.0.BUILD-SNAPSHOT</light-logging-configurer.version>
 
-        <spring.version>4.1.0.RELEASE</spring.version>
-        <spring.security.version>3.2.5.RELEASE</spring.security.version>
-        <spring.data.jpa.version>1.6.4.RELEASE</spring.data.jpa.version>
-        <apache.tiles.version>2.2.2</apache.tiles.version>
-        <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
-        <hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
-        <validation-api.version>1.1.0.Final</validation-api.version>
         <guava.version>18.0.1</guava.version>
         <commons-lang3.version>3.2.1</commons-lang3.version>
         <commons-collections4.version>4.0</commons-collections4.version>
@@ -39,7 +38,6 @@
         <tika-core.version>1.4</tika-core.version>
         <ehcache-web.version>2.0.4</ehcache-web.version>
         <collections-generic.version>4.01</collections-generic.version>
-        <hibernate-entitymanager.version>4.3.1.Final</hibernate-entitymanager.version>
         <logback.version>1.0.13</logback.version>
         <junit.version>4.11</junit.version>
         <easymock.version>3.2</easymock.version>
@@ -47,6 +45,15 @@
 
     <dependencies>
 
+    	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
         <dependency>
             <groupId>org.lightadmin</groupId>
             <artifactId>lightadmin</artifactId>
@@ -56,72 +63,6 @@
             <groupId>org.lightadmin</groupId>
             <artifactId>light-logging-configurer</artifactId>
             <version>${light-logging-configurer.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>${spring.data.jpa.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>${hibernate-jpa-2.1-api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate-entitymanager.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jboss.logging</groupId>
-                    <artifactId>jboss-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
         </dependency>
 
         <dependency>
@@ -177,21 +118,23 @@
     </build>
 
     <repositories>
+		<repository>
+			<id>nexus</id>
+			<name>local private nexus</name>
+			<url>http://maven.oschina.net/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
         <repository>
             <id>lightadmin-nexus-releases</id>
             <url>http://lightadmin.org/nexus/content/repositories/releases</url>
             <releases>
                 <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
             </releases>
-        </repository>
-        <repository>
-            <id>lightadmin-nexus-snapshots</id>
-            <url>http://lightadmin.org/nexus/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
         </repository>
     </repositories>
 </project>

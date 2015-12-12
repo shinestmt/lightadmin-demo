@@ -48,9 +48,9 @@ public class ApplicationConfiguration {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/lightadmin-demo?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8");
-        dataSource.setUsername("root");
-        dataSource.setPassword("sun1ssh1n1ng");
+        dataSource.setUrl("jdbc:mysql://192.168.5.4:3306/demo?useUnicode=true&connectionCollation=utf8_general_ci&characterSetResults=utf8&characterEncoding=utf8");
+        dataSource.setUsername("fanhang");
+        dataSource.setPassword("hh");
         return dataSource;
     }
 
